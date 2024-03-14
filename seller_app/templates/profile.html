@@ -1,0 +1,57 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block title %}
+<title>My Profile</title>
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5vh;
+        font-family: "Open Sans", sans-serif;
+    }
+    form input, textarea {
+        border: 2px solid gray;
+    }
+    form input {
+        width: 15vw;
+    }
+    form textarea {
+        width: 31vw;
+    }
+    form button {
+        border: none;
+        padding: 5px;
+        background-color: rgb(10, 10, 173);
+        color: white;
+        font-family: "Open Sans", sans-serif;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main>
+    <center><h1 style='font-family: "Open Sans", sans-serif;text-decoration: underline;'>MY PROFILE</h1></center>
+    <form action="{% url 'profile' %}" method="post">
+        {% csrf_token %}
+        <div class="names">
+            <input type="text" name="fname" id="fname" placeholder="Firstname" value="{{ user.first_name }}">
+            <input type="text" name="lname" id="lname" placeholder="Lastname" value="{{ user.last_name }}"><br>
+        </div>
+        <br>
+        <div class="contacts">
+            <input type="email" name="email" id="email" placeholder="Email" value="{{ user.email }}" readonly>
+            <input type="tel" name="phone" id="phone" placeholder="Phone Number" value="{{ user_details.phone_number }}"><br>
+        </div>
+        <br>
+        <textarea name="address" id="address" cols="50" rows="5" placeholder="Address">{{ user_details.address }}</textarea><br>
+        <textarea name="store_name" id="store_name" cols="50" rows="2" placeholder="Store Name">{{ user_details.store_name }}</textarea><br>
+        {% for message in messages %}
+        <h4 style="color: green;">{{ message }}</h4>
+        {% endfor %}
+        <button type="submit">Update</button><br>
+    </form>
+</main>
+{% endblock %}

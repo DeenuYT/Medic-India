@@ -1,0 +1,62 @@
+{% load static %}
+
+{% block title %}
+<title>Medic Tools</title> 
+<style>
+    main {
+        font-family: "Open Sans", sans-serif;
+        margin-top: 20vh;
+    }
+    section {
+        display: flex;
+        justify-content: center;
+        margin-top: 5vh;
+    }
+    section img {
+        width: 20vw;
+        height: 30vh;
+        border: none;
+        box-sizing: border-box;
+        box-shadow: 0 0 5px gray;
+    }
+    section img:hover {
+        box-shadow: 0 0 10px rgb(255, 60, 0), 0 0 15px red;
+    }
+    section .right {
+        margin-left: 5vw;
+        margin-bottom: 10vh;
+    }
+    section a {
+        text-decoration: none;
+        color: black;
+    }
+    main center a button {
+        border: none;
+        color: white;
+        background-color: blue;
+        padding: 8px;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main>
+    <center><h1 style="text-decoration: underline;">AI POWERED APPLICATIONS</h1></center>
+    <section>
+        <div class="left">
+            <a href="{% url 'chatbot' %}">
+            <img src="{% static 'chatbot.jpg' %}" alt="chatbot">
+            <center>CHATBOT</center>
+        </a>
+        </div>
+        <div class="right">
+            <a href="{% url 'predict' %}">
+            <img src="{% static 'prediction.jpg' %}" alt="prediction">
+            <center>PLANT PREDICTION</center>
+        </a>
+        </div>
+    </section>
+    <center><a href="{% url 'index' %}"><button>HOME</button></a></center>
+</main>
+{% endblock %}

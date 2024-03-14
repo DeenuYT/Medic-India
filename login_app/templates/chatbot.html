@@ -1,0 +1,38 @@
+{% load static %}
+
+{% block title %}
+<title>Medic Tools</title> 
+<style>
+    main {
+        font-family: "Open Sans", sans-serif;
+        margin-top: 7vh;
+    }
+    section {
+        display: flex;
+        justify-content: center;
+        margin-top: 5vh;
+    }
+    section .right {
+        margin-left: 5vw;
+        margin-bottom: 10vh;
+    }
+    main center a button {
+        border: none;
+        color: white;
+        background-color: blue;
+        padding: 8px;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main>
+    <center><h1 style="text-decoration: underline;">CHATBOT</h1></center>
+    <section>
+        <iframe width="350" height="500" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/0647127f-baff-42a3-888d-1b10e291e4c8"></iframe>
+    </section>
+    <br>
+    <center><a href="{% url 'medic_tools' %}"><button>Medic Tools</button></a></center>
+</main>
+{% endblock %}

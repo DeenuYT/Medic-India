@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Payment Success</title>
+<style>
+    h2 {
+        color: red;
+    }
+    main {
+        margin: 20vh 0 20vh 0;
+        font-family: "Open Sans", sans-serif;
+    }
+    main a {
+        border: none;
+        background-color: red;
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main>
+    <center>
+        <h2>Payment Cancelled</h2>
+    </center>
+    <center><a href="{% url 'home' %}">Home</a></center>
+</main>
+
+{% endblock %}

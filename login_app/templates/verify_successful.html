@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .bg {
+            position: absolute; 
+            height: 100%; 
+            width: 100%; 
+            background-image: url('https://wallpapercave.com/wp/wp4626021.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            filter: blur(8px);
+            z-index: -1;
+        }
+        .index p {
+            font-size: 30px;
+            word-spacing: 5px;
+            letter-spacing: 2px;
+            font-family: 'Exo 2', sans-serif;
+            color: white;
+        }
+        .index a {
+            text-decoration: none;
+            margin-right: 70px;
+        }
+        .index button {
+            font-size: 24px;
+            padding: 10px;
+            font-family: 'Exo 2', sans-serif;
+            background-color: #bb0057;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .index button:hover {
+            background-color: #d45c00;
+            color: white;
+        }
+        @media only screen and (max-width: 500px) {
+            .index button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="index">
+        <p>Account activated successfully</p><br>
+        <div class="btns">
+            <a href="{% url 'login' %}"><button>Login</button></a>
+        </div>
+    </div>
+</body>
+</html>
+

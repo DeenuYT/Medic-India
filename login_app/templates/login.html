@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+        <style>
+            body {
+                display: block;
+                justify-content: center;
+                align-items: center;
+                font-family: "Open Sans", sans-serif;
+            }
+    
+            main {
+                margin-top: 5vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+            }
+    
+            .left img {
+                height: 50vh;
+                width: 25vw;
+                margin: 0 40px 0 0;
+            }
+    
+            .right form {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            }
+    
+            form input,
+            textarea {
+                color: black;
+                font-size: 15px;
+                padding: 2px;
+                width: 20vw;
+                border: rgb(2, 2, 70) 2px solid;
+                border-radius: 2px;
+            }
+    
+            form button {
+                width: 10vw;
+                border: none;
+                background-color: rgb(41, 41, 218);
+                color: white;
+                padding: 8px;
+            }
+    
+            form button:hover {
+                background-color: rgb(3, 3, 168);
+            }
+        </style>
+</head>
+
+<body>
+    <center>
+        <h1 style="margin-top: 8vh;">LOGIN</h1>
+    </center>
+    <main>
+        <div class="left">
+            <img src="{% static 'login.jpg' %}" alt="logo">
+        </div>
+        <div class="right">
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <input type="email" name="email" id="email" placeholder="Email" required><br>
+                <input type="password" name="pass" id="pass" placeholder="Password" required><br>
+                {% for message in messages %}
+                <h2 style="color: red;">{{ message }}</h2>
+                {% endfor %}
+                <button type="submit">Login</button><br>
+            </form>
+            <center><p>Don't have an account? <a href="{% url 'signup' %}">Signup</a></p></center>
+        </div>
+    </main>
+</body>
+
+</html>

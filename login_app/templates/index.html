@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Medic India</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        header {
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            border-bottom:2px solid rgb(184, 184, 184);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #logo {
+            height: 6vh;
+            width: auto;
+            margin: 2px 0 0 10px;
+        }
+        .head-left {
+            display: inline-flex;
+        }
+        .head-right {
+            float: right;
+        }
+        .head-right a {
+            text-decoration: none;
+            margin-left: 20px;
+            margin-right: 20px;
+            padding: 10px;
+            color: black;
+            font-family: "Open Sans", sans-serif;
+        }
+        .head-right a:hover {
+            background-color: rgb(201, 201, 201);
+        }
+        main {
+            margin-top: 15vh;
+        }
+        .cont1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cont1 img {
+            width: 25vw;
+            height: 40vh;
+        }
+        .btns {
+            display: grid;
+        }
+        .btns button {
+            text-decoration: none;
+            padding: 2vh 10vw 2vh 10vw;
+            font-size: 18px;
+            border: none;
+            background-color: rgb(22, 194, 22);
+            cursor: pointer;
+            color: white;
+        }
+        .btns button:hover {
+            background-color: rgb(2, 163, 2);
+        }
+        .btns a {
+            text-decoration: none;
+            background-color: rgb(22, 194, 22);
+            font-weight: 800;
+
+        }
+        .btns a:hover {
+            background-color: rgb(2, 163, 2);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="head-left">
+            <img src="{% static 'leaves.png' %}" alt="logo" id="logo">
+            <h2 style='margin-left: 10px;font-family: "Open Sans", sans-serif;color: mediumvioletred;'>Medic India</h2>
+        </div>
+        <div class="head-right">
+            <a href="{% url 'medic_tools' %}">Medic's Tools</a>
+            <a href="{% url 'seller' %}">Become a Seller</a>
+        </div>
+    </header>
+    <main>
+        <center><h1 style='font-family: "Open Sans", sans-serif;'>We built a network of peoples to promote the use of <span style="color: red;">Ayurvedic Medicines</span></h1></center>
+        <section class="cont1">
+            <img src="{% static 'index_leaf.jpg' %}" alt="logo">
+            <div class="btns">
+                <a href="{% url 'signup' %}"><button>Signup</button></a><br>
+                <a href="{% url 'login' %}"><button>Login</button></a>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

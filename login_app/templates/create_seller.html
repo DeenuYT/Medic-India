@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Seller</title>
+        <style>
+            body {
+                display: block;
+                justify-content: center;
+                align-items: center;
+                font-family: "Open Sans", sans-serif;
+            }
+    
+            main {
+                margin-top: 5vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+            }
+    
+            .left img {
+                height: 50vh;
+                width: 25vw;
+                margin: 0 40px 0 0;
+            }
+    
+            .right form {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            }
+    
+            form input {
+            color: black;
+            font-size: 15px;
+            padding: 2px;
+            width: 15vw;
+            border: rgb(2, 2, 70) 2px solid;
+            border-radius: 2px;
+            }
+
+            textarea {
+                color: black;
+                font-size: 15px;
+                padding: 2px;
+                width: 31vw;
+                border: rgb(2, 2, 70) 2px solid;
+                border-radius: 2px;
+            }
+    
+            form button {
+                width: 10vw;
+                border: none;
+                background-color: rgb(41, 41, 218);
+                color: white;
+                padding: 8px;
+            }
+    
+            form button:hover {
+                background-color: rgb(3, 3, 168);
+            }
+        </style>
+</head>
+
+<body>
+    <center>
+        <h1 style="margin-top: 8vh;">BECOME A SELLER</h1>
+        <p>Submit a request to become a seller of our platform</p>
+    </center>
+    <main>
+        <div class="left">
+            <img src="{% static 'seller.jpg' %}" alt="logo">
+        </div>
+        <div class="right">
+            <form action="{% url 'seller' %}" method="post">
+                {% csrf_token %}
+                <div class="names">
+                    <input type="text" name="fname" id="fname" placeholder="Firstname" required>
+                    <input type="text" name="lname" id="lname" placeholder="Lastname" required><br>
+                </div>
+                <br>
+                <div class="contacts">
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <input type="tel" name="phone" id="phone" placeholder="Phone Number" required><br>
+                </div>
+                <br>
+                <textarea name="store_name" id="store_name" cols="50" rows="1" placeholder="Store Name" required></textarea><br>
+                <textarea name="address" id="address" cols="50" rows="3" placeholder="Address" required></textarea><br>
+                <div class="passwords">
+                    <input type="password" name="pass" id="pass" placeholder="Password" required>
+                    <input type="password" name="cpass" id="cpass" placeholder="Confirm Password" required><br>
+                </div>
+                <br>
+                {% for message in messages %}
+                <h2 style="color: red;">{{ message }}</h2>
+                {% endfor %}
+                <button type="submit">Request</button><br>
+            </form>
+            <center><a href="{% url 'index' %}">Go Home</a></center>
+        </div>
+    </main>
+</body>
+
+</html>

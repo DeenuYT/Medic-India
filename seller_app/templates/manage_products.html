@@ -1,0 +1,25 @@
+{% extends 'base1.html' %}
+
+{% block title %}
+<title>My Products</title>
+<style>
+    #add_product button {
+        margin: 3vh 0 3vh 0;
+        background-color: rgb(33, 33, 185);
+        border: none;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<center><a id="add_product" href="{% url 'add_product' %}"><button>Add New Product</button></a></center>
+<hr>
+<ol>
+{% for product in products %}
+<li><a href="{% url 'manage' product.id %}">{{ product.name }}</a></li><br>
+{% endfor %}
+</ol>
+{% endblock %}

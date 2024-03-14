@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>{{ product.name }}</title>
+<style>
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: "Open Sans", sans-serif;
+    }
+    main section {
+        display: flex;
+        align-items: center;
+    }
+    main section img {
+        width: 30vw;
+        height: auto;
+        margin-right: 5vw;
+    }
+    .right a button {
+        border: none;
+        color: white;
+        background-color: blue;
+        padding: 8px;
+        cursor: pointer;
+    }
+        
+</style>
+{% endblock %}
+
+{% block body %}
+<main>
+    
+    <section>
+        <div class="left">
+            <img src="{% static file_name %}" alt="{{ product.name }}">
+
+        </div>
+        <div class="right">
+            <h2>{{ product.name }}</h2>
+            <p style="color: green;font-size: 20px;"><b>Price:</b> {{ product.price }}</p>
+            <p><b>Description:</b> {{ product.description }}</p>
+            <p><b>Seller:</b> {{ user_details.store_name }}</p>
+            <p><b>Phone:</b> {{ user_details.phone_number }}</p>
+            <p><b>Email:</b> {{ user_details.user.email }}</p>
+            <p><b>Address:</b> {{ user_details.address }}</p>
+
+            {% if collections %}
+            <a href="{% url 'remove_from_collection' product.id %}"><button style="background-color: rgb(187, 21, 21);">Remove from Collections</button></a>
+            {% else %}
+            <a href="{% url 'add_to_collection' product.id %}"><button>Add to Collections</button></a>
+            {% endif %}
+        </div>
+    </section>
+</main>
+{% endblock %}

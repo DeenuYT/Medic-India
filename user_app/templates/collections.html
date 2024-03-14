@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>My Collections</title>
+<style>
+    main {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        margin-top: 4vh;
+        justify-content: space-evenly;
+    }
+    main a {
+        text-decoration: none;
+        color: black;
+        font-family: "Open Sans", sans-serif;
+    }
+    .product {
+        max-width: 17vw;
+        min-width: 17vw;
+        border: 1px solid rgb(211, 211, 211);
+        padding: 20px;
+        margin-bottom: 2vh;
+    }
+    .product:hover {
+        background-color: rgb(207, 207, 207);
+    }
+    a img {
+        height: 20vh;
+        width: 10vw;
+        display: grid;
+        justify-content: space-around;
+    }
+    a .imgs {
+        display: grid;
+        justify-content: center;
+    }
+    .product .details {
+        max-width: 200px;
+    }
+    a button {
+        border: none;
+        background-color: green;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<main>
+    {% for product in products %}
+    <a href="{% url 'single_product' product.id %}">
+        <div class="product">
+            <div class="imgs">
+                <img src="{% static product.file_name %}" alt="{{ product.name }}">
+            </div>
+            <div class="details">
+                <h3 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">{{ product.name }}</h3>
+                <h4 style="color: green;">Rs. {{ product.price }}</h4>
+                <h4>Store: {{ product.seller }}</h4>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+    
+</main>
+<center>
+<a href="{% url 'checkout' %}"><Button>CheckOut</Button></a>
+</center>
+
+{% endblock %}

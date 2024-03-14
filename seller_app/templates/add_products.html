@@ -1,0 +1,43 @@
+{% extends 'base1.html' %}
+
+{% block title %}
+<title>Add Products</title>
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    input, textarea {
+        width: 20vw;
+        border-radius: 5px;
+        border: 2px solid gray;
+    }
+    input {
+        padding: 5px;
+    }
+    form button {
+        cursor: pointer;
+        border: none;
+        background-color: rgb(29, 29, 165);
+        padding: 5px 20px 5px 20px;
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<center>
+    <h1 style='font-family: "Open Sans", sans-serif;text-decoration: underline;'>ADD NEW PRODUCT</h1>
+</center>
+<form action="{% url 'add_product' %}" method="post" enctype="multipart/form-data">
+    <h4 style="color: green;">{{ stats }}</h4>
+    {% csrf_token %}
+    <input type="text" name="name" id="name" placeholder="Product Name" required><br>
+    <textarea name="desc" id="desc" cols="30" rows="10" placeholder="Mention product uses and other information" required></textarea><br>
+    <input type="text" name="price" id="price" placeholder="Price" required><br>
+    <input type="file" name="img" id="img" required><br>
+    <button type="submit">ADD</button>
+</form>
+{% endblock %}
